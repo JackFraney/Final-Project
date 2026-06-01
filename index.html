@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore The Solar System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>The Solar System</h1>
+        <p>Select a planet below to learn more about it.</p>
+    </header>
+
+    <main class="solar-system-grid">
+        <a href="sun.html" class="planet-button sun-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg" alt="The Sun">
+            <h2>The Sun</h2>
+        </a>
+        
+        <a href="mercury.html" class="planet-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/4a/Mercury_in_true_color.jpg" alt="Mercury">
+            <h2>Mercury</h2>
+        </a>
+
+        <a href="venus.html" class="planet-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Venus-real_color.jpg" alt="Venus">
+            <h2>Venus</h2>
+        </a>
+
+        <a href="earth.html" class="planet-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/97/The_Earth_seen_from_Apollo_17.jpg" alt="Earth">
+            <h2>Earth</h2>
+        </a>
+
+        <a href="mars.html" class="planet-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/0/02/OSIRIS_Mars_true_color.jpg" alt="Mars">
+            <h2>Mars</h2>
+        </a>
+
+        <a href="jupiter.html" class="planet-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e2/Jupiter.jpg" alt="Jupiter">
+            <h2>Jupiter</h2>
+        </a>
+
+        <a href="saturn.html" class="planet-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Saturn_during_Equinox.jpg" alt="Saturn">
+            <h2>Saturn</h2>
+        </a>
+
+        <a href="uranus.html" class="planet-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Uranus2.jpg" alt="Uranus">
+            <h2>Uranus</h2>
+        </a>
+
+        <a href="neptune.html" class="planet-button">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/5/56/Neptune_Full.jpg" alt="Neptune">            <h2>Neptune</h2>
+        </a>
+    </main>
+
+</main>
+
+    <section class="universe-animation-container">
+        <h2>Live Orbit Simulator</h2>
+        
+        <div class="orrery-layout">
+            <div class="solar-system-orrery">
+                <div class="anim-sun"></div>
+                <div class="orbit mercury-orbit"><div class="anim-planet mercury-anim"></div></div>
+                <div class="orbit venus-orbit"><div class="anim-planet venus-anim"></div></div>
+                <div class="orbit earth-orbit"><div class="anim-planet earth-anim"></div></div>
+                <div class="orbit mars-orbit"><div class="anim-planet mars-anim"></div></div>
+                <div class="orbit jupiter-orbit"><div class="anim-planet jupiter-anim"></div></div>
+                <div class="orbit saturn-orbit"><div class="anim-planet saturn-anim"></div></div>
+                <div class="orbit uranus-orbit"><div class="anim-planet uranus-anim"></div></div>
+                <div class="orbit neptune-orbit"><div class="anim-planet neptune-anim"></div></div>
+            </div>
+
+            <div class="orrery-key">
+                <h3>Celestial Key</h3>
+                <ul>
+                    <li><span class="key-dot sun-dot"></span> Sun</li>
+                    <li><span class="key-dot mercury-dot"></span> Mercury</li>
+                    <li><span class="key-dot venus-dot"></span> Venus</li>
+                    <li><span class="key-dot earth-dot"></span> Earth</li>
+                    <li><span class="key-dot mars-dot"></span> Mars</li>
+                    <li><span class="key-dot jupiter-dot"></span> Jupiter</li>
+                    <li><span class="key-dot saturn-dot"></span> Saturn</li>
+                    <li><span class="key-dot uranus-dot"></span> Uranus</li>
+                    <li><span class="key-dot neptune-dot"></span> Neptune</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

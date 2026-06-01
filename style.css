@@ -1,0 +1,357 @@
+/* style.css */
+
+/* Define CSS Variables */
+:root {
+  --bg-color: #050508;
+  --text-color: #c5c6c7;
+  --heading-color: #66fcf1;
+  --card-bg: #1f2833;
+  --accent-color: #45a29e;
+  --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --transition-speed: 0.3s;
+}
+
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-color);
+  
+  /* Pure CSS Starry Background Trick */
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 1px, transparent 20px),
+    radial-gradient(white, rgba(255,255,255,.15) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.1) 1px, transparent 30px);
+  background-size: 250px 250px, 450px 450px, 350px 350px;
+  background-position: 0 0, 40px 60px, 150px 300px;
+  background-repeat: repeat;
+  
+  color: var(--text-color);
+  font-family: var(--font-main);
+  text-align: center;
+  min-height: 100vh;
+}
+
+h1, h2, h3 {
+  color: var(--heading-color);
+}
+
+/* Header Styles */
+header {
+  padding: 2rem 1rem;
+  background-color: rgba(31, 40, 51, 0.9); /* Slightly transparent to blend with space */
+  border-bottom: 3px solid var(--accent-color);
+  margin-bottom: 2rem;
+}
+
+/* Solar System Single Line Row (Home Page) */
+.solar-system-grid {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 3rem 2rem;
+  max-width: 100%;
+  margin: 0 auto;
+  overflow-x: auto; /* Forces everything into a single line with a horizontal scroll */
+  box-sizing: border-box;
+  
+  /* Custom scrollbar for modern browsers */
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--card-bg);
+}
+
+/* Custom Scrollbar Styles for Chrome, Safari, and Edge */
+.solar-system-grid::-webkit-scrollbar {
+  height: 8px;
+}
+.solar-system-grid::-webkit-scrollbar-track {
+  background: var(--card-bg);
+  border-radius: 10px;
+}
+.solar-system-grid::-webkit-scrollbar-thumb {
+  background: var(--accent-color);
+  border-radius: 10px;
+}
+
+.planet-button {
+  flex: 0 0 auto; /* CRITICAL: Prevents the planet cards from squishing horizontally */
+  width: 130px; /* Keeps card sizes perfectly uniform */
+  text-decoration: none;
+  color: var(--text-color);
+  background-color: rgba(31, 40, 51, 0.85); /* Semitransparent so stars peek through */
+  border-radius: 15px;
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+  border: 1px solid transparent;
+}
+
+.planet-button:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px rgba(102, 252, 241, 0.2);
+  border-color: var(--accent-color);
+}
+
+/* Sun Specific Hover Effect */
+.sun-button:hover {
+  box-shadow: 0 10px 20px rgba(255, 140, 0, 0.4); 
+  border-color: #ff8c00; 
+}
+
+.planet-button img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+.planet-button h2 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+/* Planet Page Styles */
+.planet-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: rgba(31, 40, 51, 0.9);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  text-align: left;
+}
+
+.planet-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.planet-header img {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+}
+
+.planet-stats {
+  list-style: none;
+  padding: 0;
+}
+
+.planet-stats li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.planet-stats strong {
+  color: var(--accent-color);
+}
+
+.back-button {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent-color);
+  color: var(--bg-color);
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color var(--transition-speed);
+}
+
+.back-button:hover {
+  background-color: var(--heading-color);
+}
+
+/* ==========================================
+   Solar System Live Orbit Animation
+   ========================================== */
+
+.universe-animation-container {
+  margin: 4rem auto;
+  max-width: 1000px;
+  padding: 2rem;
+  background-color: rgba(31, 40, 51, 0.4);
+  border-radius: 20px;
+  border: 1px solid rgba(102, 252, 241, 0.1);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* The structural bounding box for the animation */
+.solar-system-orrery {
+  position: relative;
+  width: 560px;
+  height: 560px;
+  margin: 0 auto;
+  border-radius: 50%;
+}
+
+/* Glowing Sun Core */
+.anim-sun {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #ffcc00;
+  box-shadow: 0 0 25px #ff9900, 0 0 50px #ff5500;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+}
+
+/* Universal Base Orbit Track Rules */
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px dashed rgba(102, 252, 241, 0.12);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: spin linear infinite;
+}
+
+/* Universal Base Planet Spheres */
+.anim-planet {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* ------------------------------------------
+   Individual Planetary Speeds and Dimensions
+   ------------------------------------------ */
+
+/* Mercury */
+.mercury-orbit { width: 80px; height: 80px; animation-duration: 2.5s; }
+.mercury-anim { width: 6px; height: 6px; background-color: #9e9e9e; }
+
+/* Venus */
+.venus-orbit { width: 130px; height: 130px; animation-duration: 5.5s; }
+.venus-anim { width: 9px; height: 9px; background-color: #e3bb76; }
+
+/* Earth */
+.earth-orbit { width: 185px; height: 185px; animation-duration: 9s; }
+.earth-anim { width: 10px; height: 10px; background-color: #2b82c9; box-shadow: 0 0 6px rgba(43,130,201,0.6); }
+
+/* Mars */
+.mars-orbit { width: 235px; height: 235px; animation-duration: 14s; }
+.mars-anim { width: 8px; height: 8px; background-color: #d1402c; }
+
+/* Jupiter */
+.jupiter-orbit { width: 305px; height: 305px; animation-duration: 28s; }
+.jupiter-anim { width: 18px; height: 18px; background-color: #b07f35; }
+
+/* Saturn (Includes Ring Layer) */
+.saturn-orbit { width: 385px; height: 385px; animation-duration: 50s; }
+.saturn-anim { width: 14px; height: 14px; background-color: #e2bf7d; }
+.saturn-anim::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24px;
+  height: 5px;
+  border: 2px solid rgba(226, 191, 125, 0.6);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-15deg);
+}
+
+/* Uranus */
+.uranus-orbit { width: 455px; height: 455px; animation-duration: 85s; }
+.uranus-anim { width: 12px; height: 12px; background-color: #4b70dd; }
+
+/* Neptune */
+.neptune-orbit { width: 520px; height: 520px; animation-duration: 130s; }
+.neptune-anim { width: 11px; height: 11px; background-color: #274687; }
+
+/* ------------------------------------------
+   Animation Execution Engine
+   ------------------------------------------ */
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+/* Layout Wrapper to sit simulation and key side-by-side */
+.orrery-layout {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4rem;
+  flex-wrap: wrap; /* Automatically stacks on smaller screens */
+}
+
+/* Legend Box Styles */
+.orrery-key {
+  background-color: rgba(11, 12, 16, 0.8);
+  border: 1px solid rgba(102, 252, 241, 0.2);
+  border-radius: 12px;
+  padding: 1.5rem;
+  min-width: 180px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.orrery-key h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+.orrery-key ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.orrery-key li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.orrery-key li:last-child {
+  margin-bottom: 0;
+}
+
+/* Base style for the colored indicator dots */
+.key-dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+/* Matching the dot colors exactly to the animation script */
+.sun-dot     { background-color: #ffcc00; box-shadow: 0 0 8px #ff9900; }
+.mercury-dot { background-color: #9e9e9e; }
+.venus-dot   { background-color: #e3bb76; }
+.earth-dot   { background-color: #2b82c9; box-shadow: 0 0 5px rgba(43,130,201,0.8); }
+.mars-dot    { background-color: #d1402c; }
+.jupiter-dot { background-color: #b07f35; }
+.saturn-dot  { background-color: #e2bf7d; }
+.uranus-dot  { background-color: #4b70dd; }
+.neptune-dot { background-color: #274687; }
